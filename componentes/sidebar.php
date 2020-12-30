@@ -5,31 +5,25 @@
     <ul class="nav flex-column" id="myTab" role="tablist">
 
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" @click="changeTitle('Home')" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-home"></i> Home</a>
+        <a class="nav-link active" @click="changeTitle('Agregar Nueva Rendicion')" id="NuevaRendicion-tab" data-bs-toggle="tab" href="#NuevaRendicion" role="tab" aria-controls="NuevaRendicion" aria-selected="true"><i class="fas fa-money-bill-alt"></i> Nueva Rendicion</a>
       </li>
 
       <li class="nav-item" role="presentation">
-        <a class="nav-link" @click="changeTitle('Tareas')" id="profile-tab" data-bs-toggle="tab" href="#tareas" role="tab" aria-controls="tareas" aria-selected="false"><i class="fas fa-thumbtack"></i> Tareas</a>
+        <a class="nav-link active" @click="changeTitle('Agregar Nuevo Anexo')" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-archive"></i> Nuevo Anexo</a>
       </li>
 
       <li class="nav-item" role="presentation">
-        <a class="nav-link" @click="changeTitle('Cronograam')" id="contact-tab" data-bs-toggle="tab" href="#cronograma" role="tab" aria-controls="cronograma" aria-selected="false"><i class="fas fa-poll"></i> Cronograma</a>
+        <a class="nav-link active" @click="changeTitle('Agregar Nuevo Evento')" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-calendar-alt"></i> Nuevo Evento</a>
       </li>
-
 
       <li class="nav-item" role="presentation">
-        <a class="nav-link" @click="changeTitle('Objetivos')" id="contact-tab" data-bs-toggle="tab" href="#objetivos" role="tab" aria-controls="objetivos" aria-selected="false"><i class="fas fa-bullseye"></i> Objetivos</a>
+        <a class="nav-link active" @click="changeTitle('Agregar Nuevo Viaje')" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-car-side"></i> Nuevo Viaje</a>
       </li>
-
 
       <li class="nav-item" role="presentation">
-        <a class="nav-link" @click="changeTitle('Configuracion')" id="contact-tab" data-bs-toggle="tab" href="#config" role="tab" aria-controls="config" aria-selected="false"><i class="fas fa-cog"></i> configuracion</a>
+        <a class="nav-link active" @click="changeTitle('Configuracion de el sistema')" id="config-tab" data-bs-toggle="tab" href="#config" role="tab" aria-controls="config" aria-selected="true"> <i class="fas fa-cog"></i> Configuracion</a>
       </li>
 
-
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" @click="changeTitle('perfil')" id="contact-tab" data-bs-toggle="tab" href="#perfil" role="tab" aria-controls="perfil" aria-selected="false"><i class="fas fa-male"></i> perfil</a>
-      </li>
 
     </ul>
   </div>

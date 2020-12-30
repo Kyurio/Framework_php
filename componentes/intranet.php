@@ -23,40 +23,8 @@
 
           </div>
 
-          <div class="tab-pane fade" id="tareas" role="tabpanel" aria-labelledby="tareas-tab">
-
+          <div class="tab-pane fade" id="NuevaRendicion" role="tabpanel" aria-labelledby="tareas-tab">
             <div class="container">
-
-              <button type="button" @click="ActivarFormulario" class="btn btn-sm btn-success mt-1 mb-1 py-1" name="button"><i class="fas fa-plus"></i></button>
-
-              <div  v-if="formTask == true" class="card animate__animated animate__fadeInRight animate__faster 1ms" >
-                <div class="card-body">
-
-                  <form method="post" @submit="CheckFormTask" method="post" novalidate="true">
-                    <div class="mb-1">
-                      <div class="form-group">
-                        <input type="text" class="form-control" id="nombre" v-model="title" placeholder="Tarea" aria-describedby="Tarea" required>
-                      </div>
-                    </div>
-                    <div class="mb-1">
-                      <div class="form-group">
-                        <input type="date" class="form-control" id="plazo" v-model="plazo" placeholder="Plazo" aria-describedby="plazo" required>
-                      </div>
-                    </div>
-
-
-                    <div class="progress mb-2">
-                      <div class="progress-bar bg-success" role="progressbar"  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-
-                    <button type="submit" class="btn btn-sm btn-success" name="button">Grabar</button>
-                  </form>
-
-                </div>
-              </div>
-              <div v-else class="card animate__animated animate__fadeOutRight animate__faster 1ms" >
-
-              </div>
 
               <!-- buscador -->
               <div class="col-sm-5">
@@ -98,7 +66,6 @@
 
 
             </div>
-
           </div>
 
           <div class="tab-pane fade" id="cronograma" role="tabpanel" aria-labelledby="cronograma-tab">
@@ -201,67 +168,7 @@
           </div>
 
           <div class="tab-pane fade" id="config" role="tabpanel" aria-labelledby="config-tab">
-            <div class="container py-5">
-
-
-              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link active" id="pills-seccion-tab" data-bs-toggle="pill" href="#pills-seccion" role="tab" aria-controls="pills-seccion" aria-selected="true">Secciones</a>
-                </li>
-
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" id="pills-home-tab" data-bs-toggle="pill" href="#pills-users" role="tab" aria-controls="pills-users" aria-selected="false">Usuarios</a>
-                </li>
-
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
-                </li>
-
-              </ul>
-
-              <div class="tab-content" id="pills-tabContent">
-
-                <div class="tab-pane fade show active" id="pills-users" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                  <p> agregar usuarios </p>
-                  <div class="card">
-                    <div class="card-body">
-                      <form method="post" @submit="CheckFormTask" method="post" novalidate="true">
-
-                        <div class="mb-1">
-                          <div class="form-group">
-                            <input type="text" class="form-control" id="usuario" v-model="usuario" placeholder="usuario" aria-describedby="usuario" required>
-                          </div>
-                        </div>
-
-                        <div class="mb-1">
-                          <div class="form-group">
-                            <input type="text" class="form-control" id="seccion" v-model="seccion" placeholder="seccion" aria-describedby="seccion" required>
-                          </div>
-                        </div>
-
-                        <div class="mb-1">
-                          <div class="form-group">
-                            <input type="password" class="form-control" id="password" v-model="password" placeholder="password" aria-describedby="password" required>
-                          </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-sm btn-success" name="button">Grabar</button>
-                      </form>
-                    </div>
-                  </div>
-
-
-
-
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-              </div>
-
-
-            </div>
+            
           </div>
 
 

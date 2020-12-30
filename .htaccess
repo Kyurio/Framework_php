@@ -1,0 +1,17 @@
+RewriteEngine on
+
+#Redirecciona al index
+RewriteRule ^$ /rendiciones/vistas/index.php [L]
+
+#buscar el archivo ingresado en la url
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#Urls amigables
+RewriteRule ^([a-zA-Z0-9/]+)$ /rendiciones/vistas/$1.php [NC,L]
+
+
+#Error
+ErrorDocument 404 /rendiciones/error/404.php
+ErrorDocument 500 /rendiciones/error/500.php
+ErrorDocument 403 /rendiciones/error/403.php
+ErrorDocument 300 /rendiciones/error/300.php
