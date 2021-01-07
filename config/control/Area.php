@@ -1,9 +1,9 @@
 <?php
-require_once("../../config/query/Tarea.php");
+require_once("../../config/query/Area.php");
 require_once("../../config/core/Autoload.php");
 require_once("../../extends/redirect.php");
 
-$objTasks = new Tarea();
+$objArea = new Area();
 
 
 
@@ -12,15 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
   $data = json_decode(file_get_contents("php://input"), true);
-  $titulo =  trim($data['title_task']);
-  $plazo =  trim($data['date_task']);
+  $area =  trim($data['area']);
 
-  if($insert  = $objTasks->insert_tarea($titulo, $plazo)){
+  if($insert  = $objArea->insert_area($area)){
     // redireccionar
     echo true;
   }else{
     // error al direccionar
-    echo false  ;
+    echo false;
   }
 
 

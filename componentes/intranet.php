@@ -1,3 +1,5 @@
+
+
 <div id="app">
 
   <div class="container-fluid">
@@ -17,9 +19,106 @@
 
         <div class="tab-content" id="myTabContent">
 
+          <div class="tab-pane fade show active" id="nueva_rendicion" role="tabpanel" aria-labelledby="rendicion-tab">
 
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
 
+
+                  <button type="button" class="btn btn-success mb-4 mt-2" data-bs-toggle="modal" data-bs-target="#ModalBoletas">
+                    Agregar Boleta
+                  </button>
+
+                  <table class="table table-hover text-center">
+                    <thead>
+                      <tr>
+                        <th scope="col">Fecha Boleta</th>
+                        <th scope="col">Area</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Pago Proveedor</th>
+                        <th scope="col">N boleta</th>
+                        <th scope="col">Clasificacion</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="item in boletas">
+                        <th scope="row">{{ item.fecha_boleta }}</th>
+                        <td>{{ item.area }}</td>
+                        <td>{{ item.monto }}</td>
+                        <td>{{ item.pago_proveedor }}</td>
+                        <td>{{ item.n_boleta }}</td>
+                        <td>{{ item.clasificacion }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="ModalBoletas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalModela">Agregar Boleta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="mt-1 mb-2 py-2" action="index.html" enctype="multipart/form-data" >
+
+                      <div class="mb-3">
+                        <label for="fechaBoleta" class="form-label">Fecha de boleta</label>
+                        <input type="date" class="form-control" id="fechaBoleta" v-model="fechaBoleta" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="Area" class="form-label">Area</label>
+                        <select class="form-select" aria-label="Seleccionar Area" id="Area" required>
+                          <option v-for="item in areas" v-bind:value="item.id_area" >{{ item.area }}</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="Monto" class="form-label">Monto</label>
+                        <input type="number" min="1" class="form-control" id="Monto" v-model="Monto" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="PagoProveedor" class="form-label">Pago Proveedor</label>
+                        <input type="text" class="form-control" id="PagoProveedor" v-model="PagoProveedor" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="monto" class="form-label">Numero Boleta</label>
+                        <input type="number" min="1" class="form-control" id="monto" v-model="N_boleta" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="Clasificacion" class="form-label">Clasificacion</label>
+                        <input type="number" min="1" class="form-control" id="Clasificacion" v-model="Clasificacion" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="formFile" class="form-label">Boletas</label>
+                        <input class="form-control" type="file" name="boletas[]" multiple=""  id="formFile">
+                      </div>
+
+                      <div class="mb-3">
+                        <button type="button" class="btn btn-sm btn-success" name="button" @click="insert_boleta">Grabar</button>
+                      </div>
+
+                    </form>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
 
           </div>
 
@@ -37,32 +136,7 @@
               </div>
               <!-- end buscador -->
 
-              <div class="card mt-2 mb-2">
-                <div class="card-body">
-                  <div class="container">
-                    <table class="table text-center">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Tarea</th>
-                          <th scope="col">Fecha</th>
-                          <th scope="col">Accion</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="(item, index) in filterTasks"  v-show="(pag - 1) * num_results_taks <= index  && pag * num_results_taks > index">
-                          <td>1</td>
-                          <td>{{ item.titulo }}</td>
-                          <td>{{ item.plazo }}</td>
-                          <td>
-                            <button type="button" @click="TerminarTarea(item.id)" name="button" class="btn btn-info btn-sm"> <i class="fas fa-check"></i></button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+
 
 
             </div>
@@ -85,39 +159,7 @@
                   </div>
                   <!-- end buscador -->
 
-                  <!-- contenedor -->
-                  <div class="row ">
-                    <div class="col-sm-3 mb-4 list" v-for="(item, index) in filterTasks"  v-show="(pag - 1) * num_results_taks <= index  && pag * num_results_taks > index">
-                      <div class="card z-depth-1-half " >
-                        <div class="view overlay">
-                          <img class="name card-img-top" src="" alt="Card image cap">
-                          <a><div class="mask rgba-white-slight"></div></a>
-                        </div>
-                        <div class="card-body">
-                          <h4 class="">{{ item.titulo }}</h4>
-                          <p class="">{{ item.plazo }} </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end container -->
 
-                  <!-- paginador -->
-                  <nav aria-label="Page navigation" class="text-center">
-                    <ul class="pagination text-center">
-                      <li>
-                        <a class="mr-3" href="#" aria-label="Previous" v-show="pag != 1" @click.prevent="pag -= 1">
-                          <span aria-hidden="true"> anterior </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" aria-label="Next" v-show="pag * num_results_taks / tasks.length < 1" @click.prevent="pag += 1">
-                          <span aria-hidden="true"> siguiente </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                  <!-- end paginador -->
                 </div>
               </div>
 
@@ -133,49 +175,84 @@
           <div class="tab-pane fade" id="objetivos" role="tabpanel" aria-labelledby="objetivos-tab">
             <div class="container py-5">
 
-              <div class="card">
-                <div class="card-body">
-                  <h4> crear nuevo objetivo </h4>
-                  <form class="border border-light p-5" enctype="multipart/form-data" method="POST" action="<?php echo RUTA_URL ?>config/control/InsertarTarea.php">
 
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="objetivo" name="objetivo" placeholder="objetivo" aria-describedby="objetivo" required>
-                    </div>
-
-                    <div class="form-group">
-                      <input type="date" class="form-control" id="plazo" name="plazo" placeholder="Plazo" aria-describedby="plazo" required>
-                    </div>
-
-                    <select class="form-select" aria-label="grupos">
-                      <option selected>Selecciona el grupo</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-
-                    <div class="progress mb-2">
-                      <div class="progress-bar bg-success" role="progressbar"  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-
-                    <button type="submit" class="btn btn-sm btn-success" name="button">Subir</button>
-                  </form>
-
-                </div>
-              </div>
 
 
             </div>
           </div>
 
-          <div class="tab-pane fade" id="config" role="tabpanel" aria-labelledby="config-tab">
-            
-          </div>
+          <div class="tab-pane fade" id="configuracion" role="tabpanel" aria-labelledby="config-tab">
 
+            <div class="card">
+              <div class="card-body">
+
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-area-tab" data-bs-toggle="pill" href="#pills-area" role="tab" aria-controls="pills-area" aria-selected="true">Area</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                  <div class="tab-pane fade show active" id="pills-area" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                    <div class="card">
+                      <div class="card-body">
+
+                        <form >
+
+                          <div class="col-6 mb-2 mt-2">
+                            <div class="mb-3">
+                              <label for="fechaBoleta" class="form-label">Fecha de boleta</label>
+                              <input type="text" class="form-control" v-model="name_area" id="fechaBoleta" required>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <button type="button" @click="insert_areas" class="btn btn-success">Agregar</button>
+                          </div>
+
+                        </form>
+
+                        <table class="table text-center">
+                          <thead>
+                            <tr>
+                              <th scope="col">Area</th>
+                              <th scope="col">Accion</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="item in areas">
+                              <th scope="row">{{ item.area }}</th>
+                              <td>
+                                <button type="button" class="btn btn-sm btn-warning" name="button"><i class="fas fa-pen"></i></button>
+                                <button @click="eliminar_areas(item.id_area)" type="button" class="btn btn-sm btn-danger" name="button"><i class="fas fa-trash"></i></button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+                  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
 
         </div>
 
-
       </main>
+
 
     </div>
   </div>

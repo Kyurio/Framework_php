@@ -6,7 +6,7 @@
 //header
 require_once("../inc/header.php");
 //jumbotron
-require_once("../componentes/login.php");
+require_once("../componentes/intranet.php");
 //footer
 require_once("../inc/footer.php");
 

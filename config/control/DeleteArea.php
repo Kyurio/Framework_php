@@ -1,17 +1,18 @@
 <?php
-require_once("../../config/query/Tarea.php");
+require_once("../../config/query/Area.php");
 require_once("../../config/core/Autoload.php");
 require_once("../../extends/redirect.php");
 
-$objTasks = new Tarea();
+$objAreas = new Area();
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
   $data = json_decode(file_get_contents("php://input"), true);
-  $id =  trim($data['Id_tarea']);
+  $id =  trim($data['id_area']);
 
-  if($insert  = $objTasks->update_tarea($id)){
+  if($delete  = $objAreas->delete_area($id)){
     // redireccionar
     echo json_encode(true);
   }else{
