@@ -186,29 +186,24 @@
             <div class="card">
               <div class="card-body">
 
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="pills-area-tab" data-bs-toggle="pill" href="#pills-area" role="tab" aria-controls="pills-area" aria-selected="true">Area</a>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
-                  </li>
-                </ul>
+                <!-- importa el navbar de el tabs -->
+                <?php require_once("../componentes/navbartab.php"); ?>
+                <!-- end inmport -->
+
                 <div class="tab-content" id="pills-tabContent">
+
                   <div class="tab-pane fade show active" id="pills-area" role="tabpanel" aria-labelledby="pills-home-tab">
 
                     <div class="card">
                       <div class="card-body">
 
+                        <h5>Areas</h5>
                         <form >
 
                           <div class="col-6 mb-2 mt-2">
                             <div class="mb-3">
-                              <label for="fechaBoleta" class="form-label">Fecha de boleta</label>
-                              <input type="text" class="form-control" v-model="name_area" id="fechaBoleta" required>
+                              <label for="Area" class="form-label">Agregar Nueva Area</label>
+                              <input type="text" class="form-control" v-model="name_area" id="Area" required>
                             </div>
                           </div>
                           <div class="col-4">
@@ -239,8 +234,205 @@
                     </div>
 
                   </div>
-                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-                  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                  <div class="tab-pane fade" id="pills-rol" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                    <div class="card">
+                      <div class="card-body">
+                        <h5>Roles de el sistema</h5>
+
+                        <div class="col-6 mb-2 mt-2">
+                          <div class="mb-3">
+                            <label for="Roles" class="form-label">Agregar Nuevo Rol</label>
+                            <input type="text" class="form-control" v-model="name_rol" id="Roles" required>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <button type="button" @click="insert_rol" class="btn btn-success">Agregar</button>
+                        </div>
+
+                        <table class="table text-center">
+                          <thead>
+                            <tr>
+                              <th scope="col">Area</th>
+                              <th scope="col">Accion</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="item in roles">
+                              <th scope="row">{{ item.rol }}</th>
+                              <td>
+                                <button type="button" class="btn btn-sm btn-warning" name="button"><i class="fas fa-pen"></i></button>
+                                <button @click="eliminar_rol(item.id)" type="button" class="btn btn-sm btn-danger" name="button"><i class="fas fa-trash"></i></button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane fade" id="pills-bancos" role="tabpanel" aria-labelledby="pills-bancos-tab">
+
+                    <div class="card">
+                      <div class="card-body">
+
+                        <h5>Bancos</h5>
+                        <form >
+
+                          <div class="col-6 mb-2 mt-2">
+                            <div class="mb-3">
+                              <label for="Area" class="form-label">Agregar Nuevo Banco</label>
+                              <input type="text" class="form-control" v-model="name_banco" id="banco" required>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <button type="button" @click="insert_banco" class="btn btn-success">Agregar</button>
+                          </div>
+
+                        </form>
+
+                        <table class="table text-center">
+                          <thead>
+                            <tr>
+                              <th scope="col">banco</th>
+                              <th scope="col">Accion</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="item in bancos">
+                              <th scope="row">{{ item.banco }}</th>
+                              <td>
+                                <button type="button" class="btn btn-sm btn-warning" name="button"><i class="fas fa-pen"></i></button>
+                                <button @click="eliminr_banco(item.id_banco)" type="button" class="btn btn-sm btn-danger" name="button"><i class="fas fa-trash"></i></button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane fade" id="pills-usuarios" role="tabpanel" aria-labelledby="pills-usuarios-tab">
+
+                    <div class="card">
+                      <div class="card-body">
+
+                        <h5>Usuarios</h5>
+
+                        <div class="row">
+                          <div class="col-sm-5">
+
+                            <form >
+
+
+                              <div class="mb-3">
+                                <label for="Area" class="form-label">Rol</label>
+                                <select class="form-select" aria-label="roles" id="rol">
+                                  <option v-for="item in roles" v-bind:value="item.id" >{{ item.rol }}</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="Area" class="form-label">Rol</label>
+                                <select class="form-select" aria-label="roles" id="rol">
+                                  <option v-for="item in bancos" v-bind:value="item.id_banco" >{{ item.banco }}</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="Area" class="form-label">Mail</label>
+                                <input type="mail" class="form-control" v-model="mail" id="Mail" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="Area" class="form-label">Tipo Cuenta</label>
+                                <select class="form-select" aria-label="roles" id="rol">
+                                  <option v-for="item in cuentas" v-bind:value="item.id_tipo_cuenta" >{{ item.tipo_cuenta }}</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="Area" class="form-label">Rut</label>
+                                <input type="text" class="form-control" v-model="rut" id="Rut" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="Area" class="form-label">Nro Cuenta</label>
+                                <input type="text" class="form-control" v-model="n_Cuenta" id="n_cuenta" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="password" class="form-label">password</label>
+                                <input type="password" class="form-control" v-model="password" id="password" required>
+                              </div>
+                              
+                              <div class="col-4">
+                                <button type="button" @click="insert_areas" class="btn btn-success">Agregar</button>
+                              </div>
+
+                            </form>
+
+                          </div>
+                          <div class="col-sm-7">
+                            <table class="table text-center">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Usuarios</th>
+                                  <th scope="col">Accion</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr v-for="item in areas">
+                                  <th scope="row">{{ item.area }}</th>
+                                  <td>
+                                    <button type="button" class="btn btn-sm btn-warning" name="button"><i class="fas fa-pen"></i></button>
+                                    <button @click="eliminar_areas(item.id_area)" type="button" class="btn btn-sm btn-danger" name="button"><i class="fas fa-trash"></i></button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane fade" id="pills-cuenta" role="tabpanel" aria-labelledby="pills-cuenta-tab">
+
+                    <div class="card">
+                      <div class="card-body">
+                        <h5>Cuentas</h5>
+
+                        <div class="col-6 mb-2 mt-2">
+                          <div class="mb-3">
+                            <label for="Cuentas" class="form-label">Agregar Nueva Cuenta</label>
+                            <input type="text" class="form-control" v-model="name_cuenta" id="Cuentas" required>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <button type="button" @click="insert_cuenta" class="btn btn-success">Agregar</button>
+                        </div>
+
+                        <table class="table text-center">
+                          <thead>
+                            <tr>
+                              <th scope="col">Cuentas</th>
+                              <th scope="col">Accion</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="item in cuentas">
+                              <th scope="row">{{ item.tipo_cuenta }}</th>
+                              <td>
+                                <button type="button" class="btn btn-sm btn-warning" name="button"><i class="fas fa-pen"></i></button>
+                                <button @click="eliminar_cuenta(item.id_tipo_cuenta)" type="button" class="btn btn-sm btn-danger" name="button"><i class="fas fa-trash"></i></button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
 
 

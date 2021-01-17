@@ -3,6 +3,7 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
   <div class="sidebar-sticky pt-3">
     <ul class="nav flex-column" id="myTab" role="tablist">
+      
 
       <li class="nav-item" role="presentation">
         <a class="nav-link active" @click="changeTitle('Agregar Nueva Rendicion')" id="NuevaRendicion-tab" data-bs-toggle="tab" href="#nueva_rendicion" role="tab" aria-controls="NuevaRendicion" aria-selected="true"><i class="fas fa-money-bill-alt"></i> Nueva Rendicion</a>
