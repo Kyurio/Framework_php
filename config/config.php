@@ -2,10 +2,10 @@
 
 //ruta de el sitio
 define('RUTA_APP', dirname(dirname(__FILE__)));
-define('RUTA_URL', 'http://localhost/rendiciones/');
+define('RUTA_URL', 'http://localhost/framework_php/');
 
 //configuracion de el sitio
-define('NOMBRE_SITIO', 'RenDOS');
+define('NOMBRE_SITIO', 'PHP FRAMEWORK');
 
 
 //datos de conexion
