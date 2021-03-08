@@ -6,11 +6,18 @@ var app = new Vue({
 
 
     titulo: 'titulo default',
-    Nombre_web: 'Nombre Web'
+    Nombre_web: 'Nombre Web',
+
+    //valores dolars
+
+    ValorDolars: '',
+    FechaCompra: '',
+    CantidadDolars: '',
+    errors: ̣{},
 
   },
 
-  mounted: function(){
+  mounted: {
 
 
   },
@@ -31,17 +38,59 @@ var app = new Vue({
 
     },
 
-    test: function (){
+    GrabarDolars: function (){
 
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-      })
+      axios({
+        method: 'POST',
+        url: '/framework_php/',
+        data: {
+          name: this.name_category,
+          description: this.description_category,
+        }
 
-    }
+      }).then(function (response) {
+        // handle success
+        if(response.data == true){
+          swal("Exito al grabar!","se ha guardado un nuevo registro", "success");
+        }else{
+          swal("Error al grabar!","por favor intentelo mas tarde", "warning");
+        }
+        //console.log(response.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+
+      //refresca la tabla
+
+    },
+
+    Empresa: function() {
+
+      axios({
+        method: 'POST',
+        url: '/framework_php/',
+        data: {
+          name: this.name_category,
+          description: this.description_category,
+        }
+
+      }).then(function (response) {
+        // handle success
+        if(response.data == true){
+          swal("Exito al grabar!","se ha guardado un nuevo registro", "success");
+        }else{
+          swal("Error al grabar!","por favor intentelo mas tarde", "warning");
+        }
+        //console.log(response.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+
+    },
+
+
 
 
   }

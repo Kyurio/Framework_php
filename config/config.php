@@ -12,7 +12,7 @@ define('NOMBRE_SITIO', 'PHP FRAMEWORK');
 
 define('USER', 'root');
 define('PASSWORD', '');
-define('NAME_BD', 'rendiciones');
+define('NAME_BD', 'papu');
 define('HOST', 'localhost');
 
 
