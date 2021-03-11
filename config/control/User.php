@@ -9,11 +9,12 @@ require_once("../../extends/redirect.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $objAreas = new Area();
+  $key = base64_encode("123");
 
   if($select  = $objAreas->listar_area()){
     // redireccionar
     echo json_encode($select);
-    
+
   }else{
     // error al direccionar
     echo false;

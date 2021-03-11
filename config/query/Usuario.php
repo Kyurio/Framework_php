@@ -4,6 +4,7 @@ require_once("../../config/core/Autoload.php");
 
 class Usuario extends Conexion{
 
+  private $strKey;
   private $strUsusario;
   private $strSeccion;
   private $intPass;
@@ -16,7 +17,7 @@ class Usuario extends Conexion{
   }
 
   // insert
-  public function insert_tarea(string $usuario, string $seccion, string $pass){
+  public function insert_tarea(string $key, string $usuario, string $seccion, string $pass){
 
     try {
 
@@ -24,6 +25,7 @@ class Usuario extends Conexion{
       $this->strPlazo = $plazo;
       $this->intEstado = 1;
       $this->intIdUsuario =1;
+      $this->strKey = base64_decode
 
       // 1 activo - 0 inactivo;
 
